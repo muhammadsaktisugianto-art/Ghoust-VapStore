@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ghoust VapStore | Premium Vape Store</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        neon: {
+                            green: '#39FF14',
+                            purple: '#BF00FF',
+                            blue: '#00F3FF'
+                        },
+                        dark: {
+                            bg: '#0a0a0a',
+                            card: '#171717',
+                            surface: '#262626'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0a0a0a;
+            color: #ffffff;
+        }
+
+        .glass {
+            background: rgba(23, 23, 23, 0.7);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .neon-glow {
+            box-shadow: 0 0 10px rgba(57, 255, 20, 0.3);
+        }
+
+        .neon-text-glow {
+            text-shadow: 0 0 10px rgba(57, 255, 20, 0.5);
+        }
+
+        /* Hide scrollbar for chrome/safari/opera */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+
+        /* Hide scrollbar for IE, Edge and Firefox */
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            /* IE and Edge */
+            scrollbar-width: none;
+            /* Firefox */
+        }
+    </style>
+</head>
+
+<body class="antialiased min-h-screen flex flex-col">
+
+    <!-- Navbar -->
+    <nav class="fixed w-full z-50 glass border-b border-white/10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <div class="flex-shrink-0 cursor-pointer" onclick="app.renderHome()">
+                    <h1 class="text-2xl font-bold tracking-tighter text-white">
+                        Ghoust<span class="text-neon-green">VapStore</span>
+                    </h1>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-8">
+                        <a href="#"
+                            class="hover:text-neon-green transition-colors px-3 py-2 rounded-md text-sm font-medium">Home</a>
+                        <a href="#products"
+                            class="hover:text-neon-green transition-colors px-3 py-2 rounded-md text-sm font-medium">Products</a>
+                        <a href="#about"
+                            class="hover:text-neon-green transition-colors px-3 py-2 rounded-md text-sm font-medium">About</a>
+                    </div>
+                </div>
+                <div class="flex items-center gap-4">
+                    <button id="cart-btn" class="relative p-2 text-gray-400 hover:text-white transition-colors">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                            stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+                        </svg>
+                        <span id="cart-count"
+                            class="absolute top-0 right-0 inline-flex items-center justify-center px-2 py-1 text-xs font-bold leading-none text-black transform translate-x-1/4 -translate-y-1/4 bg-neon-green rounded-full opacity-0 transition-opacity duration-300">0</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header id="home" class="relative pt-20 pb-16 md:pt-32 md:pb-24 overflow-hidden">
+        <div class="absolute inset-0 z-0">
+            <div class="absolute inset-0 bg-gradient-to-b from-neon-purple/20 to-dark-bg"></div>
+            <!-- Abstract Background Shapes -->
+            <div class="absolute top-0 right-0 -mr-20 -mt-20 w-96 h-96 rounded-full bg-neon-green/10 blur-3xl"></div>
+            <div class="absolute bottom-0 left-0 -ml-20 -mb-20 w-80 h-80 rounded-full bg-neon-purple/10 blur-3xl"></div>
+        </div>
+
+        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h1 class="text-5xl md:text-7xl font-extrabold tracking-tight mb-6">
+                <span class="block text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-400">Experience
+                    the</span>
+                <span
+                    class="block text-transparent bg-clip-text bg-gradient-to-r from-neon-green to-neon-blue neon-text-glow">Future
+                    of Vaping</span>
+            </h1>
+            <p class="mt-4 max-w-2xl mx-auto text-xl text-gray-400">
+                Premium devices, exotic flavors, and accessories for the modern vaper.
+                Elevate your clouds with Ghoust VapStore.
+            </p>
+            <div class="mt-10 flex justify-center gap-4">
+                <a href="#products"
+                    class="px-8 py-3 border border-transparent text-base font-medium rounded-full text-black bg-neon-green hover:bg-green-400 transition-all shadow-[0_0_20px_rgba(57,255,20,0.3)] hover:shadow-[0_0_30px_rgba(57,255,20,0.5)]">
+                    Shop Now
+                </a>
+                <button
+                    class="px-8 py-3 border border-white/20 text-base font-medium rounded-full text-white hover:bg-white/10 transition-all backdrop-blur-sm">
+                    Learn More
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Products Section -->
+    <main id="products" class="flex-grow relative z-10 py-16 bg-dark-bg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-end mb-12">
+                <div>
+                    <h2 class="text-3xl font-bold text-white mb-2">Featured Products</h2>
+                    <div class="h-1 w-20 bg-neon-green rounded"></div>
+                </div>
+
+                <!-- Filter/Sort (Visual only for now) -->
+                <div class="flex gap-2">
+                    <button
+                        class="px-4 py-2 text-sm rounded-full bg-dark-surface border border-white/10 hover:border-neon-green transition-colors text-gray-300">All</button>
+                    <button
+                        class="px-4 py-2 text-sm rounded-full bg-dark-bg border border-white/10 hover:border-neon-green transition-colors text-gray-500 hover:text-white">Mods</button>
+                    <button
+                        class="px-4 py-2 text-sm rounded-full bg-dark-bg border border-white/10 hover:border-neon-green transition-colors text-gray-500 hover:text-white">Liquids</button>
+                </div>
+            </div>
+
+            <!-- Product Grid -->
+            <div id="product-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+                <!-- Products will be injected here by JS -->
+                <div class="col-span-full text-center py-20 text-gray-500 animate-pulse">
+                    Loading products from IndexedDB...
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- About Section -->
+    <section id="about" class="relative py-20 overflow-hidden">
+        <div class="absolute inset-0 bg-dark-surface"></div>
+        <div
+            class="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-neon-purple to-transparent opacity-50">
+        </div>
+
+        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div class="relative">
+                    <div
+                        class="absolute -inset-4 bg-gradient-to-r from-neon-green to-neon-blue rounded-2xl blur-lg opacity-30">
+                    </div>
+                    <div class="relative rounded-2xl overflow-hidden border border-white/10 shadow-2xl">
+                        <img src="https://placehold.co/600x400/171717/39FF14?text=Our+Store" alt="About Ghoust VapStore"
+                            class="w-full object-cover">
+                    </div>
+                </div>
+                <div>
+                    <h2 class="text-3xl md:text-4xl font-bold text-white mb-6">
+                        Redefining the <span class="text-neon-purple">Vaping Culture</span>
+                    </h2>
+                    <p class="text-gray-400 mb-6 leading-relaxed">
+                        Founded in 2024, Ghoust VapStore was born from a passion for technology and flavor. We believe
+                        that vaping isn't just a habit—it's a lifestyle. That's why we curate only the finest devices
+                        and e-liquids from around the globe.
+                    </p>
+                    <p class="text-gray-400 mb-8 leading-relaxed">
+                        Whether you're a cloud chaser, a flavor enthusiast, or just starting your journey to quit
+                        smoking, our expert team is here to guide you through the nebula of choices.
+                    </p>
+
+                    <div class="grid grid-cols-2 gap-6">
+                        <div class="p-4 bg-dark-card rounded-lg border border-white/5">
+                            <h4 class="text-2xl font-bold text-neon-green mb-1">100%</h4>
+                            <p class="text-sm text-gray-500">Authentic Products</p>
+                        </div>
+                        <div class="p-4 bg-dark-card rounded-lg border border-white/5">
+                            <h4 class="text-2xl font-bold text-neon-blue mb-1">24/7</h4>
+                            <p class="text-sm text-gray-500">Expert Support</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark-card border-t border-white/5 py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div class="col-span-1 md:col-span-2">
+                    <h3 class="text-xl font-bold text-white mb-4">Ghoust<span class="text-neon-green">VapStore</span>
+                    </h3>
+                    <p class="text-gray-400 max-w-xs">
+                        Your one-stop shop for premium vaping equipment and juices. Quality guaranteed.
+                    </p>
+                </div>
+                <div>
+                    <h4 class="text-white font-semibold mb-4">Quick Links</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#" class="hover:text-neon-green transition-colors">Home</a></li>
+                        <li><a href="#products" class="hover:text-neon-green transition-colors">Shop</a></li>
+                        <li><a href="#" class="hover:text-neon-green transition-colors">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-white font-semibold mb-4">Connect</h4>
+                    <div class="flex space-x-4">
+                        <!-- Social Icons -->
+                        <a href="#" class="text-gray-400 hover:text-neon-green transition-colors">Instagram</a>
+                        <a href="#" class="text-gray-400 hover:text-neon-green transition-colors">Twitter</a>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-12 pt-8 border-t border-white/5 text-center text-gray-500 text-sm">
+                &copy; 2024 Ghoust VapStore. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <!-- Cart Modal -->
+    <div id="cart-modal" class="fixed inset-0 z-[60] hidden" aria-labelledby="modal-title" role="dialog"
+        aria-modal="true">
+        <!-- Backdrop -->
+        <div id="cart-backdrop" class="fixed inset-0 bg-black/70 backdrop-blur-sm transition-opacity opacity-0"></div>
+
+        <div class="fixed inset-0 z-10 overflow-y-auto">
+            <div class="flex min-h-full items-center justify-center p-4 text-center sm:p-0">
+                <!-- Modal Panel -->
+                <div id="cart-panel"
+                    class="relative transform overflow-hidden rounded-2xl bg-dark-card border border-white/10 text-left shadow-[0_0_50px_rgba(0,0,0,0.5)] transition-all sm:my-8 sm:w-full sm:max-w-lg opacity-0 scale-95">
+
+                    <!-- Header -->
+                    <div
+                        class="bg-dark-surface px-4 py-4 sm:px-6 border-b border-white/5 flex justify-between items-center">
+                        <h3 class="text-lg font-semibold leading-6 text-white" id="modal-title">Shopping Cart</h3>
+                        <button id="close-cart" type="button" class="text-gray-400 hover:text-white transition-colors">
+                            <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M6 18L18 6M6 6l12 12" />
+                            </svg>
+                        </button>
+                    </div>
+
+                    <!-- Body -->
+                    <div class="px-4 py-6 sm:px-6 max-h-[60vh] overflow-y-auto custom-scrollbar">
+                        <ul id="cart-items" class="divide-y divide-white/10">
+                            <!-- Cart items injected here -->
+                        </ul>
+                    </div>
+
+                    <!-- Footer -->
+                    <div class="bg-dark-surface px-4 py-6 sm:px-6 border-t border-white/5">
+                        <div class="flex justify-between items-center mb-6">
+                            <span class="text-gray-400">Total Amount</span>
+                            <span id="cart-total" class="text-2xl font-bold text-neon-green">Rp 0</span>
+                        </div>
+                        <button onclick="app.checkout()"
+                            class="w-full flex justify-center items-center gap-2 px-6 py-3 border border-transparent rounded-xl shadow-sm text-base font-bold text-black bg-neon-green hover:bg-green-400 transition-all hover:shadow-[0_0_20px_rgba(57,255,20,0.4)]">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                <path
+                                    d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z" />
+                            </svg>
+                            Checkout via WhatsApp
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Notification Toast -->
+    <div id="toast" class="fixed bottom-5 right-5 transform translate-y-20 opacity-0 transition-all duration-300 z-50">
+        <div
+            class="bg-dark-surface border border-neon-green/50 text-white px-6 py-3 rounded-lg shadow-[0_0_15px_rgba(57,255,20,0.2)] flex items-center gap-3">
+            <svg class="w-5 h-5 text-neon-green" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+            </svg>
+            <span id="toast-message">Item added to cart</span>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
